@@ -32,10 +32,10 @@ env = OpenAIGym('SC2CollectMineralShards-v2', visualize=False)
 
 # Network as list of layers
 network_spec = [
-    dict(type='conv2d', size=32),
+    dict(type='conv2d', size=64),
     dict(type='flatten'),
     dict(type='dense', size=32, activation='relu'),
-    dict(type='lstm', size=32)
+    dict(type='lstm', size=64)
 ]
 
 saver_spec = {
@@ -73,7 +73,7 @@ agent = PPOAgent(
     baseline_mode=None,
     baseline=None,
     baseline_optimizer=None,
-    gae_lambda=None,
+    gae_lambda=0.99,
     normalize_rewards=False,
     # PGLRModel
     likelihood_ratio_clipping=0.2,
