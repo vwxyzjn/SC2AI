@@ -11792,6 +11792,23 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Actor-critic-algorithm">Actor critic algorithm<a class="anchor-link" href="#Actor-critic-algorithm">&#182;</a></h3><p>Actor is the "policy" of the agent, while Critic is the "value function" of the agent. The actor-only algorithm usually suffers from slow learning, while the critic-only algorithm had issues dealing with continuous action spaces<cite data-cite="Grondman2012-ve"> (Grondman, 2012)</cite>. Futhermore, according to Grondman, the actor-critic algorithm combines the best of the both world and possesses the following advantages:</p>
+<ul>
+<li>Faster training time</li>
+<li>Better handling of continuous actions</li>
+<li>(Usually) Nice convergence properties</li>
+</ul>
+<h3 id="A3C">A3C<a class="anchor-link" href="#A3C">&#182;</a></h3><p>A3C specifies a procedure that asynchronously trains multiple agents in parallel, on multiple
+instances of the environment. Such procedure surpasses the previous state-of-the-art on the Atari domain while "training for half the time on a single multi-core CPU instead of a GPU" <cite data-cite="Mnih2016-uo"> (Mnih, 2016)</cite>. In an intuitive way, one can imagine multiple agents being trained in parallel universe and reflect their experience to the model asynchronously, hence resulting in a more generalized training.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Basic-Mechanics-of-Pysc2">Basic Mechanics of Pysc2<a class="anchor-link" href="#Basic-Mechanics-of-Pysc2">&#182;</a></h2><p>One of the most helpful tutorial is from <a href="https://chatbotslife.com/building-a-basic-pysc2-agent-b109cde1477c">Building a Basic PySC2 Agent</a> and <a href="https://chatbotslife.com/building-a-smart-pysc2-agent-cdc269cb095d">Building a Smart PySC2 Agent</a>. In the simplest form, you create a class that inherits from <code>base_agent.BaseAgent</code> and override the <code>step()</code> function. In essence, the <code>step</code> function of <code>base_agent.BaseAgent</code> gives you the observation of current state, including units killed, rewards, and etc, and you need to return an action.</p>
 
 </div>
@@ -11862,23 +11879,6 @@ python -m pysc2.bin.agent \
 </div>
 </div>
 
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Actor-critic-algorithm">Actor critic algorithm<a class="anchor-link" href="#Actor-critic-algorithm">&#182;</a></h3><p>Actor is the "policy" of the agent, while Critic is the "value function" of the agent. The actor-only algorithm usually suffers from slow learning, while the critic-only algorithm had issues dealing with continuous action spaces<cite data-cite="Grondman2012-ve"> (Grondman, 2012)</cite>. Futhermore, according to Grondman, the actor-critic algorithm combines the best of the both world and possesses the following advantages:</p>
-<ul>
-<li>Faster training time</li>
-<li>Better handling of continuous actions</li>
-<li>(Usually) Nice convergence properties</li>
-</ul>
-<h3 id="A3C">A3C<a class="anchor-link" href="#A3C">&#182;</a></h3><p>A3C specifies a procedure that asynchronously trains multiple agents in parallel, on multiple
-instances of the environment. Such procedure surpasses the previous state-of-the-art on the Atari domain while "training for half the time on a single multi-core CPU instead of a GPU" <cite data-cite="Mnih2016-uo"> (Mnih, 2016)</cite>. In an intuitive way, one can imagine multiple agents being trained in parallel universe and reflect their experience to the model asynchronously, hence resulting in a more generalized training.</p>
-
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
