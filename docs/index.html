@@ -11751,8 +11751,10 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Reproduction-of-Deepmind&#8217;s-StarCraft-II-Research-by-Using-Tensorforce-and-Gym">Reproduction of Deepmind&#8217;s StarCraft II Research by Using Tensorforce and Gym<a class="anchor-link" href="#Reproduction-of-Deepmind&#8217;s-StarCraft-II-Research-by-Using-Tensorforce-and-Gym">&#182;</a></h1><p>Author: Shengyi (Costa) Huang, Costa.Huang@outlook.com</p>
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>In early 2017, Google Deepmind introduced a python library <a href="https://github.com/deepmind/pysc2"><code>Pysc2</code></a>, the SC2LE (StarCraft II Learning Environment). It provides a interface for RL (Reinforcement Learning) agents to interact with StarCraft 2 by providing the observations and receiving actions. In their paper, Deepmind also described some baseline training algorithms and used them to train agents in <a href="https://github.com/deepmind/pysc2/blob/master/docs/mini_games.md">mini-games</a> such as <code>BuildMarines</code>, <code>DefeatRoaches</code> and <code>MoveToBeacon</code><cite data-cite="Vinyals2017-ck"> (Vinyals, 2017)</cite>. Nevertheless, the implementation of the algorithm is not revealed. In this research project, we surveys some reproduction of Deepmind's result and found most of their implementation hard to understand and reproduce. In light of this, I reproduces the results by using higher-level framework (e.g. Tensorforce and gym) to enhance maintainability and understandibility.</p>
+<h1 id="Reproduction-of-Deepmind&#8217;s-StarCraft-II-Research-by-Using-Tensorforce-and-Gym">Reproduction of Deepmind&#8217;s StarCraft II Research by Using Tensorforce and Gym<a class="anchor-link" href="#Reproduction-of-Deepmind&#8217;s-StarCraft-II-Research-by-Using-Tensorforce-and-Gym">&#182;</a></h1><div style="text-align:center">
+    <div>Shengyi (Costa) Huang</div>
+    <div>Costa.Huang@outlook.com</div>
+</div><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>In early 2017, Google Deepmind introduced a python library <a href="https://github.com/deepmind/pysc2"><code>Pysc2</code></a>, the SC2LE (StarCraft II Learning Environment). It provides a interface for RL (Reinforcement Learning) agents to interact with StarCraft 2 by providing the observations and receiving actions. In their paper, Deepmind also described some baseline training algorithms and used them to train agents in <a href="https://github.com/deepmind/pysc2/blob/master/docs/mini_games.md">mini-games</a> such as <code>BuildMarines</code>, <code>DefeatRoaches</code> and <code>MoveToBeacon</code><cite data-cite="Vinyals2017-ck"> (Vinyals, 2017)</cite>. Nevertheless, the implementation of the algorithm is not revealed. In this research project, we surveys some reproduction of Deepmind's result and found most of their implementation hard to understand and reproduce. In light of this, I reproduces the results by using higher-level framework (e.g. Tensorforce and gym) to enhance maintainability and understandibility.</p>
 
 </div>
 </div>
@@ -13773,13 +13775,20 @@ que5kkO6JTcAAAAASUVORK5CYII=
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Conclusion-and-Future-Work">Conclusion and Future Work<a class="anchor-link" href="#Conclusion-and-Future-Work">&#182;</a></h2><p>Overall, we successfully integrated Tensorforce and Gym to train SC2 agents. Such integration produces maintainable and readable code from a software engineering perspective. Nevertheless, our result (might have) suffered from the following problem.</p>
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Overall, we successfully integrated Tensorforce and Gym to train SC2 agents. Such integration produces maintainable and readable code from a software engineering perspective. Nevertheless, our result (might have) suffered from the following problem.</p>
 <h3 id="The-agent-didn't-have-access-to-the-full-observation-space">The agent didn't have access to the full observation space<a class="anchor-link" href="#The-agent-didn't-have-access-to-the-full-observation-space">&#182;</a></h3><p>This is partially because the action_spaces and observation_spaces of a gym environment is clearly-defined and fixed. As a result, every actions from the agents must be valid. Therefore it is not suitable for a variety of games that has conditional actions or observations. For example, the action “purchasing something” in SC2 is conditional upon the observation “available money”.</p>
 <p>To handle this conditional action, I would like to implement a SC2 gym environment wrapper that accepts invalid actions, ignore the invalid actions during execution, and maybe give a negative rewards for those actions. As a result, instead of handcrafting reduced observation_space, such wrapper should deal with every possible SC2 mini-games as well as the whole game.</p>
 <h3 id="We-didn't-use-A3C-to-train-the-agent">We didn't use A3C to train the agent<a class="anchor-link" href="#We-didn't-use-A3C-to-train-the-agent">&#182;</a></h3><p>Could not get the code to work. Once you try to do distributed training, the system becomes much more complex</p>
 <h3 id="The-model-took-too-long-to-train">The model took too long to train<a class="anchor-link" href="#The-model-took-too-long-to-train">&#182;</a></h3><p>There is not really not much we can do about that...</p>
 <h3 id="Frame-skip">Frame skip<a class="anchor-link" href="#Frame-skip">&#182;</a></h3><p>We skipped 8 frame per action simply becasue it makes the training significantly faster. However, such setting also implies that the agent might not able to use the best resources available.</p>
-
+<h2 id="Future-Work">Future Work<a class="anchor-link" href="#Future-Work">&#182;</a></h2><p>The current reinforcement learning frameworks seem to be focusing on training agents against built-in AI and constraints, but I would be very interested in implementing an environment where you can train two (or multiple) agents <em>against</em> each other at the same time. For example, instead of training terran marines against the built-in AI zerg roaches, I want to run a training algorithm on both terran marines (the primal agent) and zerg roaches (the dual agent), respectively, so that they could fight each other; and I wonder if those two agents will become well-trained at the same time.</p>
+<p>Theoretically, such approach has an analogy from Operations Research where every primal LP(Linear Programming) has a dual LP that converges to the same optimality. Empirically, such approach has been already put into work. For example, the newest AlphaGo Zero trains on itself for improving the strength of underlying model.</p>
+<p><br></p>
+<center>
+<img src="screenshots/Duality.png" />
+<br>
+<span><i>Picture. Idea: run RL algorithm on primal agent and dual agent at the same time</i></span>
+</center>
 </div>
 </div>
 </div>
