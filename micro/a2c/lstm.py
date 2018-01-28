@@ -40,7 +40,7 @@ network_spec = [
 
 saver_spec = {
     'load': True,
-    'file': 'model.ckpt-2844932',
+    'file': 'model.ckpt-3578331',
     'directory': './model1',
     'seconds': 3600
 }
