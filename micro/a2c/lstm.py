@@ -40,9 +40,9 @@ network_spec = [
 
 saver_spec = {
     'load': True,
-    'file': 'model.ckpt-3578331',
+    'file': 'model.ckpt-5445211',
     'directory': './model1',
-    'seconds': 3600
+    'seconds': 18000
 }
 
 agent = PPOAgent(
