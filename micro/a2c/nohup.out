@@ -1,0 +1,8 @@
+/mnt/disks/sc2/game/SC2AI/micro/a2c/lstm.py: 16: /mnt/disks/sc2/game/SC2AI/micro/a2c/lstm.py: import: not found
+from: can't read /var/mail/tensorforce.agents
+from: can't read /var/mail/tensorforce.execution
+from: can't read /var/mail/tensorforce.contrib.openai_gym
+/mnt/disks/sc2/game/SC2AI/micro/a2c/lstm.py: 22: /mnt/disks/sc2/game/SC2AI/micro/a2c/lstm.py: import: not found
+from: can't read /var/mail/absl
+/mnt/disks/sc2/game/SC2AI/micro/a2c/lstm.py: 24: /mnt/disks/sc2/game/SC2AI/micro/a2c/lstm.py: FLAGS: not found
+/mnt/disks/sc2/game/SC2AI/micro/a2c/lstm.py: 25: /mnt/disks/sc2/game/SC2AI/micro/a2c/lstm.py: Syntax error: word unexpected (expecting ")")
