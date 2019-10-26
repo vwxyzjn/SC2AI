@@ -4,6 +4,7 @@
 
 After two years of getting more into this field of RL research, I realized this reproduction was not even close to the original implementation. I would recommend https://github.com/simonmeister/pysc2-rl-agents as a better reproduction.
 
+------------------------------------------
 
 You may view the [Jupyter Writeup here](https://costahuang.me/SC2AI/). In this project, we 
 
