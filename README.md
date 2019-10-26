@@ -2,7 +2,7 @@
 
 ## UPDATE on 10/26/19
 
-After two years of getting more into this field of RL research, I realized this reproduction was not even close to the original implementation. I would recommend https://github.com/simonmeister/pysc2-rl-agents as a better reproduction.
+After two years of getting more into this field of RL research, I realized this reproduction was not even close to the original implementation. I would recommend https://github.com/simonmeister/pysc2-rl-agents as a better reproduction. I am archiving this repo.
 
 ------------------------------------------
 
